@@ -37,14 +37,6 @@ public class Student:Person
         }
         set
         {
-        //   try
-        //    {
-        //      if(Year<1 || Year>5){}
-        //    }
-        //   catch(Exception e)
-        //    {
-        //      Console.WriteLine(e.Message);
-        //    }
            Year=value;
         }
     }
@@ -61,17 +53,19 @@ public class Student:Person
         }
     }
 
-    public Student(string name, int age ,int year, float gpa):base(name,age)
+    public Student(string name, int age ,int year, float gpa) :base(name,age)
     {
-         try
+         
+        if(year<1 || year>5)
         {
-          if(year<1 || year>5){}
-          if (gpa<0 || gpa>4){}
+         throw new Exception("invalid exeption");
         }
-        catch(Exception e)
+        if (gpa<0 || gpa>4)
         {
-             Console.WriteLine(e.Message);
+         throw new Exception("invalid exeption");
         }
+        
+
         Year=year;
         Age=age;
         Gpa=gpa;
@@ -131,29 +125,23 @@ public class Staff:Person
          }
          set
          {
-        //     try 
-        //      {
-        //        if (JoinYear<21){}
-        //      }
-        //    catch(Exception e)
-        //     {
-        //        Console.WriteLine(e.Message);
-        //     }
+
             JoinYear=value;
          }
     }
     public Staff(string name, int age ,double salary, int joinyear):base(name,age)
     {
 
-        try 
-        {
-            if (salary<0 || salary>120000){}
-            if (joinyear<21){}
-        }
-        catch(Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+            if (salary<0 || salary>120000)
+            {
+             throw new Exception("invalid exeption");
+            }
+            if (joinyear<21)
+            {
+                throw new Exception("invalid exeption");
+            }
+            
+
         Salary =salary;
         JoinYear=joinyear;
     }
@@ -171,7 +159,7 @@ public class project
 {
     static void Main()
     {
-        Student st = new Student("esraa",20,2022,3);
+        Student st = new Student("esraa",20,4,3);
         Staff sta = new Staff("esraa",30,3000,2000);
          Person pe = new Person("name",000);
 
@@ -244,3 +232,7 @@ public class project
     }
 }
 }
+
+
+
+
